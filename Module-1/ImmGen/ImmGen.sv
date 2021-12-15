@@ -10,16 +10,12 @@ module ImmGen (
      
     case(ImmSrc)
       
-      3'b000: ImmExt = {{20 {Inst[31]}},Inst[31:20]}; //Tipo I 
-      
-      3'b001: ImmExt = {{7 {Inst[11]}}, Inst[11:7], {13 {Inst [31]}}, Inst[31:25]};
-      //Tipo S 
-      
-      3'b010: ImmExt = {{20 {Inst[31]}},Inst[7],Inst[31:25], Inst[11: 8], 1'b0};//Tipo B 
-      
-      3'b011: ImmExt = {{12 {Inst[31]}},Inst[31:20],Inst[19:12], 12'b0} ; //Tipo U 
-      
-      3'b000: ImmExt = {{12 {Inst[31]}},Inst[19:12],Inst[20],Inst[30:25], Inst[24:21], 1'b0}; //Tipo J
+      3'b000: ImmExt = {{20{Inst[31]}}, Inst[31:20]}; // Tipo I
+      3'b001: ImmExt = {{20{Inst[31]}}, Inst[31:25], Inst[11:7]}; // Tipo S
+      3'b101: ImmExt = {{20{Inst[31]}},Inst[7],Inst[30:25],Inst[11:8]};// Tipo B
+      3'b010: ImmExt = {{12{Inst[31]}}, Inst[31:12]}; // Tipo U
+      3'b110: ImmExt = {{12{Inst[31]}}, Inst[31], Inst[19:12],Inst[20], Inst[30:21],1'b0}; // Tipo J
+      default:ImmExt = 0;
       
     endcase
   end

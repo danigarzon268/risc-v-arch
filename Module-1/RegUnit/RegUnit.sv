@@ -41,7 +41,7 @@ module RegUnit (
     
     /*Validamos El RFWr*/
     
-    if(RFWr == 1)
+    if(RFWr == 1 && rd != 0)  
       RF[rd] = DataWr;
    
   end

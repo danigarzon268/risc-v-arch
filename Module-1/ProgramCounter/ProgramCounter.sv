@@ -6,7 +6,7 @@ module PROGRAM_COUNTER(
 
   
   always @(posedge CLK) begin
-    out_Result = Address;
+    out_Result <= Address;
   end
   
 endmodule
